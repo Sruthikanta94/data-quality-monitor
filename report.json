@@ -1,0 +1,85 @@
+{
+  "run_id": "20261028T075131Z",
+  "status": "ALERT",
+  "baseline_profile": {
+    "row_count": 100,
+    "columns": [
+      "record_id",
+      "event_timestamp",
+      "customer_id",
+      "amount"
+    ],
+    "null_rates": {
+      "record_id": 0.0,
+      "event_timestamp": 0.0,
+      "customer_id": 0.0,
+      "amount": 0.0
+    },
+    "duplicate_key_count": 0,
+    "invalid_timestamp_count": 0,
+    "numeric": {
+      "amount": {
+        "valid_count": 100,
+        "mean": 68.183,
+        "min": 20.28,
+        "max": 118.0
+      }
+    },
+    "latest_timestamp": "2026-10-28T07:43:00.866901+00:00"
+  },
+  "current_profile": {
+    "row_count": 70,
+    "columns": [
+      "record_id",
+      "event_timestamp",
+      "customer_id",
+      "amount"
+    ],
+    "null_rates": {
+      "record_id": 0.0,
+      "event_timestamp": 0.0,
+      "customer_id": 0.2,
+      "amount": 0.0
+    },
+    "duplicate_key_count": 1,
+    "invalid_timestamp_count": 0,
+    "numeric": {
+      "amount": {
+        "valid_count": 70,
+        "mean": 85.2294,
+        "min": 21.82,
+        "max": 289.88
+      }
+    },
+    "latest_timestamp": "2026-10-28T07:43:00.866901+00:00"
+  },
+  "alert_count": 4,
+  "alerts": [
+    {
+      "severity": "MEDIUM",
+      "check": "volume",
+      "message": "Row count changed from 100 to 70 (-30.0%); threshold is \u00b120%."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "null_rate",
+      "message": "Null rate for 'customer_id' rose from 0.0% to 20.0%."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "distribution",
+      "message": "Mean of 'amount' changed from 68.183 to 85.2294 (+25.0%); threshold is \u00b125%."
+    },
+    {
+      "severity": "HIGH",
+      "check": "duplicate_key",
+      "message": "Found 1 duplicate 'record_id' key occurrence(s)."
+    }
+  ],
+  "assumptions": [
+    "Each CSV represents one complete batch.",
+    "Null-rate and distribution checks compare columns present in both profiles.",
+    "Freshness uses event_timestamp and a default maximum age of 48 hours.",
+    "Thresholds are simple configurable defaults, not learned statistical models."
+  ]
+}
